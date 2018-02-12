@@ -1,0 +1,10 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Container
+$widescreen: 1000px + (2 * $gap);
+$fullhd: 1000px + (2 * $gap);
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

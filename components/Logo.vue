@@ -7,6 +7,14 @@
   </div>
 </template>
 
+<script>
+  export default {
+    created () {
+      console.log(process.env.COSMIC_BUCKET)
+    }
+  }
+</script>
+
 <style>
 .VueToNuxtLogo
 {

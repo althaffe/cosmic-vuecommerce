@@ -1,4 +1,5 @@
 const pkg = require('./package')
+require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
@@ -27,12 +28,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    { src: '~assets/styles/buefy.scss', lang: 'scss' }
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/buefy'
   ],
 
   /*
@@ -67,6 +70,19 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': false
+      }
     }
+  },
+
+  /*
+  ** Environment variables
+  */
+  env: {
+    COSMIC_BUCKET: process.env.COSMIC_BUCKET,
+    COSMIC_READ_KEY: process.env.COSMIC_READ_KEY
   }
 }
