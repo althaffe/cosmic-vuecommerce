@@ -9,6 +9,7 @@ module.exports = {
   */
   head: {
     title: pkg.name,
+    script: [{ src: 'https://js.stripe.com/v3/' }],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

@@ -10,7 +10,7 @@
         <div class="navbar-menu">
           <div class="navbar-end">
             <div class="navbar-item">
-              <nuxt-link :to="{name: 'cart'}"> Cart (0)</nuxt-link>
+              <nuxt-link :to="{name: 'cart'}"> Cart ({{ cartTotal }})</nuxt-link>
             </div>
           </div>
         </div>
@@ -26,6 +26,15 @@
     </footer>
   </div>
 </template>
+<script>
+  export default {
+    computed: {
+      cartTotal () {
+        return this.$store.state.cartTotal
+      }
+    }
+  }
+</script>
 
 <style>
 body {
