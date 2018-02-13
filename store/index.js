@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Vuex from 'vuex'
 import cosmic from '../plugins/cosmic'
 
@@ -12,11 +13,13 @@ const createStore = () => {
       setProducts (state, products) {
         state.products = products
       },
-      clearCartTotal (state) {
+      clearCart (state) {
+        state.cart = {}
         state.cartTotal = 0
       },
-      clearCartContents (state) {
-        state.cart = {}
+      removeItem (state, item) {
+        state.cartTotal -= item.count
+        Vue.delete(state.cart, item.slug)
       },
       addToCart (state, item) {
         state.cartTotal++
@@ -45,7 +48,8 @@ const createStore = () => {
       }
     },
     getters: {
-      products: state => state.products
+      products: state => state.products,
+      cart: state => state.cart
     }
   })
 }

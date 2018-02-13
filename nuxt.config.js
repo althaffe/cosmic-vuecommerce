@@ -1,5 +1,4 @@
 const pkg = require('./package')
-require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
@@ -37,7 +36,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/buefy'
+    '~plugins/buefy',
+    {src: '~plugins/stripe-checkout', ssr: false}
   ],
 
   /*
@@ -85,6 +85,7 @@ module.exports = {
   */
   env: {
     COSMIC_BUCKET: process.env.COSMIC_BUCKET,
-    COSMIC_READ_KEY: process.env.COSMIC_READ_KEY
+    COSMIC_READ_KEY: process.env.COSMIC_READ_KEY,
+    STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
   }
 }

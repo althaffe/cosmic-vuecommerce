@@ -16,7 +16,6 @@
         <div class="columns">
           <div class="column is-one-fifth">
             <div class="box">
-              <h2 class="subtitle has-text-weight-bold has-text-black">Filter by price:</h2>
               <h2 class="subtitle has-text-weight-bold has-text-black">Filter by type:</h2>
               <div class="field" v-for="type in types" :key="type">
                 <b-checkbox v-model="selectedTypes"
@@ -58,7 +57,7 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.state.products.filter(el => 
+      return this.$store.state.products.filter(el =>
         this.selectedTypes.length
         ? this.selectedTypes.includes(el.metadata.type)
         : el
@@ -71,7 +70,6 @@ export default {
   },
   methods: {
     addToCart(item) {
-      console.log(item)
       this.$store.commit('addToCart', item)
     }
   }
@@ -92,9 +90,6 @@ export default {
   height: 200px;
   width: auto;
   margin: 0 auto;
-}
-.subtitle {
-  font-family: 'Nunito', sans-serif;
 }
 button {
   margin: 0 auto;

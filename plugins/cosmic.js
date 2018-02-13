@@ -6,4 +6,4 @@ const bucket = Cosmic.bucket({
   write_key: process.env.COSMIC_WRITE_KEY
 })
 
-export default bucket
+module.exports = bucket
