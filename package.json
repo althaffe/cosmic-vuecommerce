@@ -11,7 +11,9 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "heroku-postbuild": "nuxt build"
+    "heroku-postbuild": "npm run build",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
@@ -22,9 +24,7 @@
     "express": "^4.15.3",
     "nuxt": "^1.0.0",
     "stripe": "^5.4.0",
-    "vue-stripe-checkout": "0.0.4",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6"
+    "vue-stripe-checkout": "0.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -32,6 +32,8 @@
     "eslint": "^4.15.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
-    "nodemon": "^1.11.0"
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.6"
   }
 }
