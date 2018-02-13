@@ -15,12 +15,19 @@
       <div class="container">
         <div class="columns">
           <div class="column is-one-fifth">
-
+            <div class="box">
+              <h2 class="subtitle has-text-weight-bold has-text-black">Filter by price:</h2>
+              <h2 class="subtitle has-text-weight-bold has-text-black">Filter by type:</h2>
+              <div class="field" v-for="type in types" :key="type">
+                <b-checkbox v-model="selectedTypes"
+                  :native-value="type" class="is-warning"> {{ type }}</b-checkbox>
+              </div>
+            </div>
           </div>
           <div class="column">
             <div class="columns is-multiline is-variable is-2">
               <div class="column is-one-third" v-for="product in products" :key="product._id">
-                <div class="box is-fullheight">
+                <div class="box">
                   <p class="subtitle has-text-centered has-text-black has-text-weight-light">
                     {{ product.title }}
                   </p>
@@ -45,14 +52,20 @@ import cosmic from '../plugins/cosmic'
 export default {
   data () {
     return {
+      types: ['painted', 'pattern', 'gradient'],
+      selectedTypes: []
     }
   },
   computed: {
     products() {
-      console.log(this.$store.state.products)
-      return this.$store.state.products
+      return this.$store.state.products.filter(el => 
+        this.selectedTypes.length
+        ? this.selectedTypes.includes(el.metadata.type)
+        : el
+      )
     }
   },
+
   async fetch({ store, params }) {
     await store.dispatch('getProducts')
   },
