@@ -71,6 +71,15 @@ export default {
     },
     checkout () {
       let amount = this.totalCost * 100
+      let items = Object.keys(this.cart).map((key, index) => {
+        return {
+          id: this.cart[key]._id,
+          title: this.cart[key].title,
+          count: this.cart[key].count,
+          slug: this.cart[key].slug
+        }
+      })
+      console.log(items)
       this.submitted = true
       this.$checkout.open({
         amount: amount,
@@ -82,7 +91,8 @@ export default {
               name: token.card.name,
               address: token.card.address_line1,
               city: token.card.address_city,
-              amount: amount
+              amount: amount,
+              items: items
             }, {
               headers: {
                 'Content-Type': 'application/json'
