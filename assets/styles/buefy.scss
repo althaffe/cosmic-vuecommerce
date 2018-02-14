@@ -5,6 +5,7 @@
 // Container
 $widescreen: 1000px + (2 * $gap);
 $fullhd: 1000px + (2 * $gap);
+$desktop: 800px + (2 * $gap);
 
 // Import Bulma and Buefy styles
 @import "~bulma";

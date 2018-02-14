@@ -7,7 +7,7 @@
             The<b>Case</b> Company
           </router-link>
         </div>
-        <div class="navbar-menu">
+        <div class="navbar-menu is-active">
           <div class="navbar-end">
             <div class="navbar-item">
               <nuxt-link :to="{name: 'cart'}"> Cart ({{ cartTotal }})</nuxt-link>

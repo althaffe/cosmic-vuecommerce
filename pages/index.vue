@@ -26,7 +26,7 @@
           <div class="column">
             <div class="columns is-multiline is-variable is-2">
               <div class="column is-one-third" v-for="product in products" :key="product._id">
-                <div class="box">
+                <div class="box product-box">
                   <p class="subtitle has-text-centered has-text-black has-text-weight-light">
                     {{ product.title }}
                   </p>
@@ -91,7 +91,16 @@ export default {
   width: auto;
   margin: 0 auto;
 }
-button {
+.product-box {
+  height: 100%;
+}
+
+.product-box button {
   margin: 0 auto;
+}
+.product-box .subtitle {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>
