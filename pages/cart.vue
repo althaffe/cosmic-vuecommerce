@@ -143,4 +143,9 @@ export default {
 button {
   margin: 0 auto;
 }
+@media screen and (max-width: 500px) {
+  .media-left {
+    display: none;
+  }
+}
 </style>
