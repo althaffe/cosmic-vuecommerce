@@ -3,7 +3,7 @@ import VueStripeCheckout from 'vue-stripe-checkout';
 
 const options = {
   key: process.env.STRIPE_PUBLIC_KEY,
-  image: 'https://cdn.meme.am/images/100x100/15882140.jpg',
+  image: 'https://cosmicjs.com/images/logo.svg',
   locale: 'auto',
   currency: 'USD',
   billingAddress: true,
