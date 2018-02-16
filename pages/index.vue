@@ -71,6 +71,10 @@ export default {
   methods: {
     addToCart(item) {
       this.$store.commit('addToCart', item)
+      this.$toast.open({
+         message: 'Added to cart',
+         type: 'is-success'
+     })
     }
   }
 }

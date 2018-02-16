@@ -2,8 +2,11 @@
   <main>
     <section class="section">
       <div class="container">
+        <nuxt-link to="/" class="back-to-shopping has-text-weight-bold"> &#8592; Back to shopping</nuxt-link>
         <div class="box">
-          <h1 class="title has-text-centered">Your Cart</h1>
+          <h1 class="title has-text-centered">
+            Your Cart
+          </h1>
           <hr>
           <div class="box" v-for="product in cart" :key="product._id">
             <article class="media cart-item">
@@ -48,8 +51,7 @@ export default {
 
   data () {
     return {
-      success: false,
-      submitted: false
+      success: false
     }
   },
   computed: {
@@ -68,6 +70,10 @@ export default {
   methods: {
     removeItem(item) {
       this.$store.commit('removeItem', item)
+      this.$toast.open({
+           message: 'Removed item from cart',
+           type: 'is-danger'
+       })
     },
     checkout () {
       let amount = this.totalCost * 100
@@ -80,7 +86,6 @@ export default {
         }
       })
       console.log(items)
-      this.submitted = true
       this.$checkout.open({
         amount: amount,
         token: (token) => {
@@ -98,7 +103,6 @@ export default {
                 'Content-Type': 'application/json'
               }
             }).then(res => {
-              this.submitted = false
               this.success = true
               this.$toast.open({
                    message: 'Order placed successfully',
@@ -117,10 +121,14 @@ export default {
 </script>
 
 <style scoped>
-.box {
+.box, .back-to-shopping {
   box-shadow: none;
   max-width: 720px;
   margin: 0 auto;
+}
+.back-to-shopping {
+  display: block;
+  margin-bottom: 10px;
 }
 .cart-image img{
   height: 100px;
