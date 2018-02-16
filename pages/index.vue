@@ -26,17 +26,7 @@
           <div class="column">
             <div class="columns is-multiline is-variable is-2">
               <div class="column is-one-third" v-for="product in products" :key="product._id">
-                <div class="box product-box">
-                  <p class="subtitle has-text-centered has-text-black has-text-weight-light">
-                    {{ product.title }}
-                  </p>
-                  <figure class="image product-image">
-                    <img :src="product.metadata.image.imgix_url" alt="">
-                  </figure><br>
-                  <button class="button is-link is-outlined is-rounded is-block" @click="addToCart(product)">
-                    ${{product.metadata.price}} - Add to Cart
-                  </button>
-                </div>
+                <product-item :product="product"></product-item>
               </div>
             </div>
           </div>
@@ -47,8 +37,12 @@
 </template>
 
 <script>
-import cosmic from '../plugins/cosmic'
+import cosmic from '@/plugins/cosmic'
+import productItem from '@/components/product-item'
 export default {
+  components : {
+    productItem
+  },
   data () {
     return {
       types: ['painted', 'pattern', 'gradient'],
@@ -67,15 +61,6 @@ export default {
 
   async fetch({ store, params }) {
     await store.dispatch('getProducts')
-  },
-  methods: {
-    addToCart(item) {
-      this.$store.commit('addToCart', item)
-      this.$toast.open({
-         message: 'Added to cart',
-         type: 'is-success'
-     })
-    }
   }
 }
 </script>
@@ -89,22 +74,5 @@ export default {
 .box {
   background: #f4f2f3;
   box-shadow: none;
-}
-.product-image img{
-  height: 200px;
-  width: auto;
-  margin: 0 auto;
-}
-.product-box {
-  height: 100%;
-}
-
-.product-box button {
-  margin: 0 auto;
-}
-.product-box .subtitle {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 </style>
