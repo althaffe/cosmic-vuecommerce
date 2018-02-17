@@ -14,6 +14,7 @@
 
     <b-modal :active.sync="modalActive">
         <div class="box modal-box">
+          <a class="close-button" @click.prevent="modalActive = false">X</a>
           <div class="columns">
             <div class="column is-hidden-mobile">
               <figure class="image modal-image">
@@ -102,5 +103,15 @@ p.description {
 }
 .box.is-bordered {
   border: 1px solid rgba(50, 115, 220, 0.2);
+}
+.close-button {
+  position: absolute;
+  right: 10px;
+  font-size: 1.2rem;
+  color:#000;
+  top: 5px;
+}
+.close-button:hover {
+  color: #ff3860;
 }
 </style>
